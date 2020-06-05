@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.fante</groupId>
-    <artifactId>admin</artifactId>
+    <artifactId>fante-evudc-master</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>admin</name>
+    <name>fante-evudc-master</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
