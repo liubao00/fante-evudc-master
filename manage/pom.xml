@@ -19,6 +19,13 @@
 	</properties>
 
 	<dependencies>
+		<!--shiro-->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>1.4.0</version>
+		</dependency>
+
 		<!--fastJson-->
 		<dependency>
 			<groupId>com.alibaba</groupId>
