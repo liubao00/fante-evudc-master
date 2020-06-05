@@ -8,15 +8,18 @@
         <outputRelativeToContentRoot value="true" />
         <module name="manage" />
         <module name="provider" />
+        <module name="fante-evudc-master" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="fante-evudc-master" target="1.8" />
       <module name="manage" target="1.8" />
       <module name="provider" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="fante-evudc-master" options="-parameters" />
       <module name="manage" options="-parameters" />
       <module name="provider" options="-parameters" />
     </option>
