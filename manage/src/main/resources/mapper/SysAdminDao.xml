@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fante.dubbo.manage.dao.SysAdminDao">
+
+    <resultMap type="com.fante.dubbo.manage.entity.SysAdmin" id="SysAdminMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="operatorId" column="operator_id" jdbcType="INTEGER"/>
+        <result property="operatorName" column="operator_name" jdbcType="VARCHAR"/>
+        <result property="roleId" column="role_id" jdbcType="INTEGER"/>
+        <result property="roleName" column="role_name" jdbcType="VARCHAR"/>
+        <result property="isFather" column="is_father" jdbcType="INTEGER"/>
+        <result property="parentId" column="parent_id" jdbcType="INTEGER"/>
+        <result property="treeIds" column="tree_ids" jdbcType="VARCHAR"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="isEnabled" column="is_enabled" jdbcType="INTEGER"/>
+        <result property="isLocked" column="is_locked" jdbcType="INTEGER"/>
+        <result property="loginIp" column="login_ip" jdbcType="VARCHAR"/>
+        <result property="loginDate" column="login_date" jdbcType="TIMESTAMP"/>
+        <result property="loginFailureCount" column="login_failure_count" jdbcType="INTEGER"/>
+        <result property="lockedDate" column="locked_date" jdbcType="TIMESTAMP"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="mobile" column="mobile" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="introduction" column="introduction" jdbcType="VARCHAR"/>
+        <result property="addTime" column="add_time" jdbcType="TIMESTAMP"/>
+        <result property="stationId" column="station_id" jdbcType="INTEGER"/>
+        <result property="groupId" column="group_id" jdbcType="VARCHAR"/>
+        <result property="nationalId" column="national_id" jdbcType="VARCHAR"/>
+        <result property="isLogin" column="is_login" jdbcType="INTEGER"/>
+        <result property="moreLogin" column="more_login" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="SysAdminMap">
+        select
+          id, operator_id, operator_name, role_id, role_name, is_father, parent_id, tree_ids, username, password, is_enabled, is_locked, login_ip, login_date, login_failure_count, locked_date, name, mobile, email, introduction, add_time, station_id, group_id, national_id, is_login, more_login
+        from fante-evudc-master.sys_admin
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="SysAdminMap">
+        select
+          id, operator_id, operator_name, role_id, role_name, is_father, parent_id, tree_ids, username, password, is_enabled, is_locked, login_ip, login_date, login_failure_count, locked_date, name, mobile, email, introduction, add_time, station_id, group_id, national_id, is_login, more_login
+        from fante-evudc-master.sys_admin
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="SysAdminMap">
+        select
+          id, operator_id, operator_name, role_id, role_name, is_father, parent_id, tree_ids, username, password, is_enabled, is_locked, login_ip, login_date, login_failure_count, locked_date, name, mobile, email, introduction, add_time, station_id, group_id, national_id, is_login, more_login
+        from fante-evudc-master.sys_admin
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="operatorId != null">
+                and operator_id = #{operatorId}
+            </if>
+            <if test="operatorName != null and operatorName != ''">
+                and operator_name = #{operatorName}
+            </if>
+            <if test="roleId != null">
+                and role_id = #{roleId}
+            </if>
+            <if test="roleName != null and roleName != ''">
+                and role_name = #{roleName}
+            </if>
+            <if test="isFather != null">
+                and is_father = #{isFather}
+            </if>
+            <if test="parentId != null">
+                and parent_id = #{parentId}
+            </if>
+            <if test="treeIds != null and treeIds != ''">
+                and tree_ids = #{treeIds}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="isEnabled != null">
+                and is_enabled = #{isEnabled}
+            </if>
+            <if test="isLocked != null">
+                and is_locked = #{isLocked}
+            </if>
+            <if test="loginIp != null and loginIp != ''">
+                and login_ip = #{loginIp}
+            </if>
+            <if test="loginDate != null">
+                and login_date = #{loginDate}
+            </if>
+            <if test="loginFailureCount != null">
+                and login_failure_count = #{loginFailureCount}
+            </if>
+            <if test="lockedDate != null">
+                and locked_date = #{lockedDate}
+            </if>
+            <if test="name != null and name != ''">
+                and name = #{name}
+            </if>
+            <if test="mobile != null and mobile != ''">
+                and mobile = #{mobile}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+            <if test="introduction != null and introduction != ''">
+                and introduction = #{introduction}
+            </if>
+            <if test="addTime != null">
+                and add_time = #{addTime}
+            </if>
+            <if test="stationId != null">
+                and station_id = #{stationId}
+            </if>
+            <if test="groupId != null and groupId != ''">
+                and group_id = #{groupId}
+            </if>
+            <if test="nationalId != null and nationalId != ''">
+                and national_id = #{nationalId}
+            </if>
+            <if test="isLogin != null">
+                and is_login = #{isLogin}
+            </if>
+            <if test="moreLogin != null">
+                and more_login = #{moreLogin}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into fante-evudc-master.sys_admin(operator_id, operator_name, role_id, role_name, is_father, parent_id, tree_ids, username, password, is_enabled, is_locked, login_ip, login_date, login_failure_count, locked_date, name, mobile, email, introduction, add_time, station_id, group_id, national_id, is_login, more_login)
+        values (#{operatorId}, #{operatorName}, #{roleId}, #{roleName}, #{isFather}, #{parentId}, #{treeIds}, #{username}, #{password}, #{isEnabled}, #{isLocked}, #{loginIp}, #{loginDate}, #{loginFailureCount}, #{lockedDate}, #{name}, #{mobile}, #{email}, #{introduction}, #{addTime}, #{stationId}, #{groupId}, #{nationalId}, #{isLogin}, #{moreLogin})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update fante-evudc-master.sys_admin
+        <set>
+            <if test="operatorId != null">
+                operator_id = #{operatorId},
+            </if>
+            <if test="operatorName != null and operatorName != ''">
+                operator_name = #{operatorName},
+            </if>
+            <if test="roleId != null">
+                role_id = #{roleId},
+            </if>
+            <if test="roleName != null and roleName != ''">
+                role_name = #{roleName},
+            </if>
+            <if test="isFather != null">
+                is_father = #{isFather},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId},
+            </if>
+            <if test="treeIds != null and treeIds != ''">
+                tree_ids = #{treeIds},
+            </if>
+            <if test="username != null and username != ''">
+                username = #{username},
+            </if>
+            <if test="password != null and password != ''">
+                password = #{password},
+            </if>
+            <if test="isEnabled != null">
+                is_enabled = #{isEnabled},
+            </if>
+            <if test="isLocked != null">
+                is_locked = #{isLocked},
+            </if>
+            <if test="loginIp != null and loginIp != ''">
+                login_ip = #{loginIp},
+            </if>
+            <if test="loginDate != null">
+                login_date = #{loginDate},
+            </if>
+            <if test="loginFailureCount != null">
+                login_failure_count = #{loginFailureCount},
+            </if>
+            <if test="lockedDate != null">
+                locked_date = #{lockedDate},
+            </if>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="mobile != null and mobile != ''">
+                mobile = #{mobile},
+            </if>
+            <if test="email != null and email != ''">
+                email = #{email},
+            </if>
+            <if test="introduction != null and introduction != ''">
+                introduction = #{introduction},
+            </if>
+            <if test="addTime != null">
+                add_time = #{addTime},
+            </if>
+            <if test="stationId != null">
+                station_id = #{stationId},
+            </if>
+            <if test="groupId != null and groupId != ''">
+                group_id = #{groupId},
+            </if>
+            <if test="nationalId != null and nationalId != ''">
+                national_id = #{nationalId},
+            </if>
+            <if test="isLogin != null">
+                is_login = #{isLogin},
+            </if>
+            <if test="moreLogin != null">
+                more_login = #{moreLogin},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from fante-evudc-master.sys_admin where id = #{id}
+    </delete>
+
+</mapper>
